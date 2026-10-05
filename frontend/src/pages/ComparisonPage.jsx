@@ -1,17 +1,14 @@
 import React from 'react';
 import { 
   GitCompare, 
-  ShieldAlert, 
+  ShieldCheck, 
   Layers, 
   ArrowRight, 
   CheckCircle2, 
-  XCircle, 
-  HelpCircle, 
-  Sparkles,
   Zap,
+  Sparkles,
   Target,
-  Compass,
-  FileCheck
+  Compass
 } from 'lucide-react';
 
 export default function ComparisonPage() {
@@ -35,7 +32,7 @@ export default function ComparisonPage() {
       highlight: false
     },
     {
-      aspect: "Guiding Investigative Question",
+      aspect: "Guiding Security Question",
       classification: '"Is this network flow NORMAL or an ATTACK?"',
       clustering: '"What types of behavioral patterns exist?"',
       highlight: true
@@ -54,13 +51,13 @@ export default function ComparisonPage() {
     },
     {
       aspect: "Model Output",
-      classification: "Discrete Class (Normal vs Attack) + Prob.",
+      classification: "Discrete Class (Normal vs Attack) + Probability",
       clustering: "Cluster ID (0 to 4) + Centroid Distance",
       highlight: false
     },
     {
       aspect: "Primary Evaluation Metrics",
-      classification: "Accuracy (96.8%), Precision, Recall, F1, ROC-AUC",
+      classification: "Accuracy (96.8%), Precision, Recall, F1, ROC-AUC (0.988)",
       clustering: "Silhouette Score (0.3722), Inertia (WCSS)",
       highlight: true
     },
@@ -71,134 +68,87 @@ export default function ComparisonPage() {
       highlight: false
     },
     {
-      aspect: "Vulnerability / Blind Spot",
-      classification: "Fails on unknown Zero-Day attacks with no prior labels",
-      clustering: "Sensitive to scaling & outliers; clusters lack semantic names without human interpretation",
+      aspect: "Operational Vulnerability",
+      classification: "Blind to novel zero-day attacks with no prior training labels",
+      clustering: "Clusters require post-hoc human interpretation to assign semantics",
       highlight: true
     },
     {
       aspect: "SOC Cybersecurity Role",
-      classification: "Real-time Firewall / IDS Threat Filtering",
-      clustering: "Threat Hunting, Baseline Profiling, Zero-Day Discovery",
+      classification: "Perimeter Firewall / IDS Line-Rate Threat Filtering",
+      clustering: "Deep Threat Hunting, Baseline Profiling, Zero-Day Discovery",
       highlight: false
     }
   ];
 
   return (
-    <div className="space-y-8 animate-fadeIn">
-      {/* Header Banner */}
-      <div className="rounded-2xl p-6 sm:p-8 bg-gradient-to-r from-cyan-950/40 via-slate-900 to-indigo-950/40 border border-cyan-500/30">
-        <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-950 border border-cyan-800 text-cyan-300 text-xs font-mono mb-3">
-          <GitCompare className="w-3.5 h-3.5" />
-          <span>SCIENTIFIC METHODOLOGY BENCHMARK</span>
-        </div>
-        <h2 className="text-2xl sm:text-4xl font-extrabold text-white">
-          Classification vs Clustering
-        </h2>
-        <p className="text-sm sm:text-base text-slate-300 mt-2 max-w-3xl">
-          A definitive comparative analysis of Supervised and Unsupervised learning paradigms evaluated on the <strong className="text-white">exact same 150,000 network flows</strong>. Essential for viva examination defense.
-        </p>
-      </div>
-
-      {/* Visual Workflow Comparison */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Classification Workflow Card */}
-        <div className="soc-card p-6 border border-emerald-500/30 bg-emerald-950/10">
-          <div className="flex items-center space-x-2 pb-3 border-b border-emerald-500/20">
-            <ShieldAlert className="w-5 h-5 text-emerald-400" />
-            <h3 className="font-bold text-base text-emerald-300 font-mono">
-              CLASSIFICATION PIPELINE (Supervised)
-            </h3>
+    <div className="space-y-6 animate-fadeIn">
+      {/* Header Banner (Concept 3 Style) */}
+      <div className="rounded-2xl p-6 sm:p-7 bg-[#111827] border border-[#1E293B] flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <div className="inline-flex items-center space-x-2 px-2.5 py-1 rounded-full bg-sky-500/10 border border-sky-500/30 text-sky-400 text-xs font-mono mb-2">
+            <GitCompare className="w-3.5 h-3.5" />
+            <span>UNIFIED METHODOLOGY BENCHMARK</span>
           </div>
-
-          <div className="my-6 flex flex-col items-center space-y-3 font-mono text-xs">
-            <div className="w-full text-center py-2.5 px-4 rounded-lg bg-slate-900 border border-emerald-500/40 text-emerald-300 font-bold shadow-md">
-              KNOWN LABELS + TELEMETRY (80% Train Set)
-            </div>
-            <ArrowRight className="w-4 h-4 text-emerald-400 rotate-90" />
-            <div className="w-full text-center py-2.5 px-4 rounded-lg bg-emerald-950/60 border border-emerald-600 text-white font-bold">
-              SUPERVISED RANDOM FOREST (100 Trees)
-            </div>
-            <ArrowRight className="w-4 h-4 text-emerald-400 rotate-90" />
-            <div className="w-full text-center py-2.5 px-4 rounded-lg bg-slate-900 border border-emerald-500/40 text-emerald-400 font-bold shadow-md">
-              DISCRETE VERDICT: NORMAL (0) or ATTACK (1)
-            </div>
-          </div>
-
-          <p className="text-xs text-slate-300 leading-relaxed">
-            <strong>Key Mechanism:</strong> The algorithm explicitly observes which feature combinations produce attacks in training. It minimizes classification error (Cross-Entropy / Gini impurity) to output high-accuracy predictions on new traffic.
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
+            Classification vs. Clustering Matrix
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl">
+            Side-by-side scientific comparison of Supervised and Unsupervised machine learning evaluated on the exact same 150,000 network flows.
           </p>
         </div>
 
-        {/* Clustering Workflow Card */}
-        <div className="soc-card p-6 border border-purple-500/30 bg-purple-950/10">
-          <div className="flex items-center space-x-2 pb-3 border-b border-purple-500/20">
-            <Layers className="w-5 h-5 text-purple-400" />
-            <h3 className="font-bold text-base text-purple-300 font-mono">
-              CLUSTERING PIPELINE (Unsupervised)
-            </h3>
-          </div>
-
-          <div className="my-6 flex flex-col items-center space-y-3 font-mono text-xs">
-            <div className="w-full text-center py-2.5 px-4 rounded-lg bg-slate-900 border border-purple-500/40 text-purple-300 font-bold shadow-md">
-              RAW UNLABELED NETWORK TELEMETRY (Zero Labels)
-            </div>
-            <ArrowRight className="w-4 h-4 text-purple-400 rotate-90" />
-            <div className="w-full text-center py-2.5 px-4 rounded-lg bg-purple-950/60 border border-purple-600 text-white font-bold">
-              UNSUPERVISED K-MEANS ($K=5$ Centroids)
-            </div>
-            <ArrowRight className="w-4 h-4 text-purple-400 rotate-90" />
-            <div className="w-full text-center py-2.5 px-4 rounded-lg bg-slate-900 border border-purple-500/40 text-purple-400 font-bold shadow-md">
-              DISCOVERED BEHAVIORAL GROUPS & CENTROIDS
-            </div>
-          </div>
-
-          <p className="text-xs text-slate-300 leading-relaxed">
-            <strong>Key Mechanism:</strong> The algorithm receives no teacher signal. It measures Euclidean distance in 37-dimensional standardized space to find geometric clusters. Security labels are used ONLY post-hoc by human analysts to profile the clusters.
-          </p>
+        <div className="flex items-center space-x-2 font-mono text-xs">
+          <span className="px-3 py-1.5 rounded-lg bg-emerald-500/10 text-emerald-300 border border-emerald-500/30">
+            Random Forest
+          </span>
+          <span className="text-slate-500">vs</span>
+          <span className="px-3 py-1.5 rounded-lg bg-indigo-500/10 text-indigo-300 border border-indigo-500/30">
+            K-Means
+          </span>
         </div>
       </div>
 
       {/* Structured Comparison Table */}
-      <div className="soc-card p-6 border border-slate-800 overflow-hidden">
-        <div className="flex items-center justify-between pb-4 border-b border-slate-800 mb-4">
+      <div className="soc-card p-6 border border-[#1E293B] overflow-hidden">
+        <div className="flex items-center justify-between pb-4 border-b border-[#1E293B] mb-4">
           <div>
-            <h3 className="text-lg font-bold text-white flex items-center space-x-2">
-              <GitCompare className="w-5 h-5 text-cyan-400" />
-              <span>Comprehensive Scientific Comparison Matrix</span>
+            <h3 className="text-base font-bold text-white flex items-center space-x-2">
+              <GitCompare className="w-4 h-4 text-sky-400" />
+              <span>Scientific Evaluation Matrix</span>
             </h3>
-            <p className="text-xs text-slate-400">
-              Direct comparison across mathematical foundations, evaluation metrics, and operational SOC utility.
+            <p className="text-xs text-slate-400 mt-0.5">
+              Direct comparison across mathematical paradigms, inputs, outputs, and SOC deployment
             </p>
           </div>
-          <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">
-            Viva Examination Ready
+          <span className="text-[11px] font-mono px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 border border-slate-700">
+            Identical 150k Telemetry
           </span>
         </div>
 
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs font-mono">
             <thead>
-              <tr className="border-b border-slate-700 bg-slate-900/80 text-slate-300">
+              <tr className="border-b border-slate-800 bg-[#0D1322] text-slate-300">
                 <th className="py-3 px-4 font-bold uppercase tracking-wider text-slate-400 w-1/4">Evaluation Aspect</th>
                 <th className="py-3 px-4 font-bold uppercase tracking-wider text-emerald-400 w-3/8">Supervised Classification</th>
-                <th className="py-3 px-4 font-bold uppercase tracking-wider text-purple-400 w-3/8">Unsupervised Clustering</th>
+                <th className="py-3 px-4 font-bold uppercase tracking-wider text-indigo-400 w-3/8">Unsupervised Clustering</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/80">
+            <tbody className="divide-y divide-slate-800/60">
               {comparisonData.map((row, idx) => (
                 <tr 
                   key={idx} 
-                  className={`hover:bg-slate-800/40 transition-colors ${row.highlight ? "bg-slate-900/30" : ""}`}
+                  className={`hover:bg-slate-800/30 transition-colors ${row.highlight ? "bg-[#0D1322]/50" : ""}`}
                 >
-                  <td className="py-3.5 px-4 font-bold text-slate-200 flex items-center space-x-2">
-                    {row.highlight && <span className="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>}
+                  <td className="py-3.5 px-4 font-semibold text-slate-200 flex items-center space-x-2">
+                    {row.highlight && <span className="w-1.5 h-1.5 rounded-full bg-sky-400 flex-shrink-0"></span>}
                     <span>{row.aspect}</span>
                   </td>
                   <td className="py-3.5 px-4 text-emerald-300 font-sans font-medium">
                     {row.classification}
                   </td>
-                  <td className="py-3.5 px-4 text-purple-300 font-sans font-medium">
+                  <td className="py-3.5 px-4 text-indigo-300 font-sans font-medium">
                     {row.clustering}
                   </td>
                 </tr>
@@ -208,31 +158,55 @@ export default function ComparisonPage() {
         </div>
       </div>
 
-      {/* Synergy in Modern SOC Operations */}
-      <div className="soc-card p-6 border border-slate-800 bg-gradient-to-r from-slate-900 via-slate-900/90 to-indigo-950/20">
-        <h3 className="text-base font-bold text-white flex items-center space-x-2 pb-3 border-b border-slate-800">
-          <Sparkles className="w-5 h-5 text-amber-400" />
-          <span>Operational Synergy: How Modern SOCs Combine Both Paradigms</span>
-        </h3>
-        <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm text-slate-300">
-          <div className="p-4 rounded-xl bg-slate-900/90 border border-slate-800">
-            <span className="text-emerald-400 font-bold block mb-1 font-mono">Stage 1: Real-Time Triage</span>
-            <p className="text-xs text-slate-400 leading-relaxed">
-              <strong>Supervised Classification (Random Forest)</strong> runs at line-rate on the perimeter firewall. It instantly blocks 96.8% of known attack signatures (DDoS floods, brute-force sweeps, known C2).
+      {/* Operational Pipeline Synergy */}
+      <div className="soc-card p-6 border border-[#1E293B]">
+        <div className="pb-3 border-b border-[#1E293B] mb-5">
+          <h3 className="text-base font-bold text-white flex items-center space-x-2">
+            <Sparkles className="w-4 h-4 text-amber-400" />
+            <span>Operational SOC Synergy: Combining Both Paradigms</span>
+          </h3>
+          <p className="text-xs text-slate-400 mt-0.5">
+            How enterprise security operations centers integrate classification and clustering into a continuous defense lifecycle
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="p-4 rounded-xl bg-[#0D1322] border border-[#1E293B]">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-xs font-mono font-bold text-emerald-400">STAGE 1</span>
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/30">
+                Firewall Line-Rate
+              </span>
+            </div>
+            <h4 className="text-sm font-semibold text-white">Automated Threat Triage</h4>
+            <p className="text-xs text-slate-400 mt-2 leading-relaxed">
+              <strong>Random Forest</strong> inspects inbound traffic at wire speed. It instantly blocks 96.8% of known threat signatures including DDoS flooding, brute-force scans, and known malware vectors.
             </p>
           </div>
 
-          <div className="p-4 rounded-xl bg-slate-900/90 border border-slate-800">
-            <span className="text-purple-400 font-bold block mb-1 font-mono">Stage 2: Threat Hunting</span>
-            <p className="text-xs text-slate-400 leading-relaxed">
-              <strong>Unsupervised Clustering (K-Means)</strong> clusters the traffic that passed inspection. Threat hunters examine outlier clusters to uncover stealthy zero-day exfiltration and evasive beaconing.
+          <div className="p-4 rounded-xl bg-[#0D1322] border border-[#1E293B]">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-xs font-mono font-bold text-indigo-400">STAGE 2</span>
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-300 border border-indigo-500/30">
+                Threat Hunting
+              </span>
+            </div>
+            <h4 className="text-sm font-semibold text-white">Latent Behavioral Discovery</h4>
+            <p className="text-xs text-slate-400 mt-2 leading-relaxed">
+              <strong>K-Means</strong> clusters the network flows that passed initial filtering without alerts. Security analysts inspect outlier cluster centroids to isolate novel zero-day exfiltration and botnet synchronization.
             </p>
           </div>
 
-          <div className="p-4 rounded-xl bg-slate-900/90 border border-slate-800">
-            <span className="text-cyan-400 font-bold block mb-1 font-mono">Stage 3: Continuous Retraining</span>
-            <p className="text-xs text-slate-400 leading-relaxed">
-              When human analysts confirm a newly discovered behavioral cluster is malicious, it is labeled and fed back into the supervised training pipeline, completing the AI intelligence feedback loop.
+          <div className="p-4 rounded-xl bg-[#0D1322] border border-[#1E293B]">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-xs font-mono font-bold text-sky-400">STAGE 3</span>
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-sky-500/10 text-sky-300 border border-sky-500/30">
+                Closed-Loop AI
+              </span>
+            </div>
+            <h4 className="text-sm font-semibold text-white">Continuous Model Retraining</h4>
+            <p className="text-xs text-slate-400 mt-2 leading-relaxed">
+              Once analysts confirm an anomalous behavioral cluster is malicious, its flows are labeled and fed back into the supervised training pipeline, continuously fortifying the model against emerging zero-days.
             </p>
           </div>
         </div>

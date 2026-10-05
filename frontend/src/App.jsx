@@ -5,9 +5,6 @@ import ClassificationPage from './pages/ClassificationPage';
 import ClusteringPage from './pages/ClusteringPage';
 import ComparisonPage from './pages/ComparisonPage';
 import DatasetExplorer from './pages/DatasetExplorer';
-import ModelInsightsPage from './pages/ModelInsightsPage';
-import VivaGuidePage from './pages/VivaGuidePage';
-import AcademicReportPage from './pages/AcademicReportPage';
 
 import { 
   fetchHealth, 
@@ -16,7 +13,7 @@ import {
   fetchClusteringMetrics,
   fetchPcaPoints 
 } from './services/api';
-import { Shield, ExternalLink, Terminal, AlertCircle } from 'lucide-react';
+import { Shield, AlertCircle } from 'lucide-react';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -101,42 +98,19 @@ export default function App() {
         {activeTab === 'dataset' && (
           <DatasetExplorer />
         )}
-
-        {activeTab === 'insights' && (
-          <ModelInsightsPage />
-        )}
-
-        {activeTab === 'viva' && (
-          <VivaGuidePage />
-        )}
-
-        {activeTab === 'report' && (
-          <AcademicReportPage />
-        )}
       </main>
 
-      {/* Modern SOC Footer */}
-      <footer className="border-t border-slate-800 bg-[#070A11] mt-12 py-8 text-xs text-slate-400">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex items-center space-x-2">
-              <Shield className="w-5 h-5 text-cyan-400" />
-              <span className="font-bold text-white font-mono tracking-wider">CYBERLENS</span>
-              <span className="text-slate-500">|</span>
-              <span className="text-slate-400">AI-Based Network Behavior Intelligence</span>
-            </div>
-
-            <div className="flex items-center space-x-4 font-mono text-[11px]">
-              <span className="text-slate-400">Random Forest: <strong className="text-emerald-400">96.77% Acc</strong></span>
-              <span className="text-slate-600">•</span>
-              <span className="text-slate-400">K-Means: <strong className="text-purple-400">K=5 Clusters</strong></span>
-              <span className="text-slate-600">•</span>
-              <span className="text-slate-400">Dataset: <strong className="text-cyan-400">150,000 Flows</strong></span>
-            </div>
+      {/* Clean Minimal Footer */}
+      <footer className="border-t border-slate-800 bg-[#070A11] mt-12 py-5 text-xs text-slate-500">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-2">
+          <div className="flex items-center space-x-2">
+            <Shield className="w-4 h-4 text-cyan-400" />
+            <span className="font-bold text-slate-300 font-mono tracking-wider">CYBERLENS</span>
+            <span className="text-slate-600">|</span>
+            <span className="text-slate-400">AI-Based Network Behavior Intelligence</span>
           </div>
-
-          <div className="pt-4 border-t border-slate-800/60 text-center sm:text-left text-[11px] text-slate-400 leading-relaxed font-sans">
-            "This project is an educational cybersecurity analytics system using synthetic network traffic. It is intended for learning, experimentation, and demonstration of machine-learning concepts. It should not be treated as a production intrusion detection system."
+          <div className="text-[11px] text-slate-500">
+            Supervised Classification vs. Unsupervised Clustering on 150,000 Flows
           </div>
         </div>
       </footer>

@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 import { 
-  ShieldAlert, 
+  ShieldCheck, 
   Award, 
   TrendingUp, 
-  HelpCircle, 
-  Layers, 
-  Sliders, 
-  CheckCircle2, 
   BarChart2, 
-  Activity,
-  Zap
+  CheckCircle2,
+  Sliders,
+  Zap,
+  Target
 } from 'lucide-react';
 import ConfusionMatrix from '../components/ConfusionMatrix';
 import AttackSandbox from '../components/AttackSandbox';
@@ -38,98 +36,48 @@ export default function ClassificationPage({ metrics }) {
     training_time_sec: 10.9
   };
 
-  const lr = metrics?.baseline_model || {
-    model_name: "Logistic Regression (Baseline)",
-    accuracy: 0.9627,
-    f1_score: 0.9593,
-    roc_auc: 0.9685
-  };
-
   const rocData = metrics?.roc_curve || [];
   const prData = metrics?.pr_curve || [];
   const topFeatures = metrics?.top_features || [];
 
   return (
-    <div className="space-y-8 animate-fadeIn">
-      {/* Header Banner */}
-      <div className="rounded-2xl p-6 sm:p-8 bg-gradient-to-r from-emerald-950/40 via-slate-900 to-slate-900 border border-emerald-500/30">
-        <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-950 border border-emerald-800 text-emerald-300 text-xs font-mono mb-3">
-          <ShieldAlert className="w-3.5 h-3.5" />
-          <span>SUPERVISED MACHINE LEARNING</span>
-        </div>
-        <h2 className="text-2xl sm:text-4xl font-extrabold text-white">
-          Network Threat Classification
-        </h2>
-        <p className="text-sm sm:text-base text-slate-300 mt-2 max-w-3xl">
-          Supervised learning solves the fundamental security inquiry: <strong className="text-emerald-300 font-mono">"Is this network activity NORMAL or an ATTACK?"</strong> By learning decision boundaries from 120,000 ground-truth labeled training flows, the model predicts threats with high empirical precision.
-        </p>
-
-        {/* Model summary badges */}
-        <div className="mt-5 grid grid-cols-2 sm:grid-cols-5 gap-3">
-          <div className="p-3 rounded-lg bg-slate-900/90 border border-slate-800">
-            <span className="text-[10px] text-slate-400 uppercase font-mono block">Accuracy</span>
-            <span className="text-xl font-bold font-mono text-emerald-400">{(rf.accuracy * 100).toFixed(2)}%</span>
+    <div className="space-y-6 animate-fadeIn">
+      {/* Header Banner (Concept 3 Style) */}
+      <div className="rounded-2xl p-6 sm:p-7 bg-[#111827] border border-[#1E293B] flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <div className="inline-flex items-center space-x-2 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono mb-2">
+            <ShieldCheck className="w-3.5 h-3.5" />
+            <span>SUPERVISED THREAT DETECTION</span>
           </div>
-          <div className="p-3 rounded-lg bg-slate-900/90 border border-slate-800">
-            <span className="text-[10px] text-slate-400 uppercase font-mono block">Precision</span>
-            <span className="text-xl font-bold font-mono text-emerald-400">{(rf.precision * 100).toFixed(2)}%</span>
-          </div>
-          <div className="p-3 rounded-lg bg-slate-900/90 border border-slate-800">
-            <span className="text-[10px] text-slate-400 uppercase font-mono block">Recall (Sensitivity)</span>
-            <span className="text-xl font-bold font-mono text-emerald-400">{(rf.recall * 100).toFixed(2)}%</span>
-          </div>
-          <div className="p-3 rounded-lg bg-slate-900/90 border border-slate-800">
-            <span className="text-[10px] text-slate-400 uppercase font-mono block">F1 Score</span>
-            <span className="text-xl font-bold font-mono text-emerald-400">{(rf.f1_score * 100).toFixed(2)}%</span>
-          </div>
-          <div className="p-3 rounded-lg bg-slate-900/90 border border-slate-800">
-            <span className="text-[10px] text-slate-400 uppercase font-mono block">ROC-AUC</span>
-            <span className="text-xl font-bold font-mono text-cyan-400">{rf.roc_auc.toFixed(4)}</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Why Classification & Why Random Forest Deep-Dive */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="soc-card p-6 border border-slate-800">
-          <h3 className="text-base font-bold text-white flex items-center space-x-2 pb-3 border-b border-slate-800">
-            <HelpCircle className="w-4 h-4 text-emerald-400" />
-            <span>Problem Statement & Why Classification?</span>
-          </h3>
-          <div className="mt-4 space-y-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
-            <p>
-              In contemporary Security Operations Centers (SOCs), millions of packets flow through firewalls every minute. Security analysts cannot inspect each session manually.
-            </p>
-            <p>
-              <strong>Supervised Classification</strong> enables automated triage. Because historical traffic data contains confirmed incident logs with verified ground truth (<code className="text-emerald-400 font-mono">0 = Normal</code>, <code className="text-rose-400 font-mono">1 = Attack</code>), the algorithm maps statistical flow features directly into categorical verdicts.
-            </p>
-            <div className="p-3 rounded-lg bg-slate-900 border border-slate-800 font-mono text-xs text-slate-400">
-              <strong className="text-white block mb-1">Supervised Learning Paradigm:</strong>
-              Training Dataset D = {"{(x_i, y_i)}"} for i=1..N, where x_i ∈ ℝ³⁷ and y_i ∈ {"{0, 1}"}.
-            </div>
-          </div>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
+            Threat Classification Engine
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl">
+            100-tree Random Forest ensemble evaluated on 30,000 holdout flows to classify traffic as Normal (0) or Attack (1).
+          </p>
         </div>
 
-        <div className="soc-card p-6 border border-slate-800">
-          <h3 className="text-base font-bold text-white flex items-center space-x-2 pb-3 border-b border-slate-800">
-            <Zap className="w-4 h-4 text-cyan-400" />
-            <span>Why Random Forest Classifier?</span>
-          </h3>
-          <div className="mt-4 space-y-2 text-xs sm:text-sm text-slate-300 leading-relaxed">
-            <ul className="space-y-2.5">
-              <li className="flex items-start space-x-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
-                <span><strong>Handles Mixed Non-Linear Topology:</strong> Cyber threats rely on multi-variable conjunctions (e.g. high byte rate AND destination port 80). Decision trees naturally segment hierarchical decision spaces.</span>
-              </li>
-              <li className="flex items-start space-x-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
-                <span><strong>Robustness to Extreme Outliers:</strong> Packet rates span from 0.1 to 65,000 pkts/s. Tree splits are rank-invariant and immune to heavy-tailed scale distortions.</span>
-              </li>
-              <li className="flex items-start space-x-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
-                <span><strong>Ensemble Bagging:</strong> Combining 100 decorrelated trees with bootstrap aggregation mitigates individual tree overfitting and guarantees consistent test generalization.</span>
-              </li>
-            </ul>
+        {/* 5 Sleek Metric Badges */}
+        <div className="flex flex-wrap items-center gap-2 font-mono">
+          <div className="px-3 py-2 rounded-xl bg-[#0D1322] border border-[#1E293B]">
+            <span className="text-[10px] text-slate-400 uppercase block">Accuracy</span>
+            <span className="text-base font-bold text-emerald-400">{(rf.accuracy * 100).toFixed(2)}%</span>
+          </div>
+          <div className="px-3 py-2 rounded-xl bg-[#0D1322] border border-[#1E293B]">
+            <span className="text-[10px] text-slate-400 uppercase block">Precision</span>
+            <span className="text-base font-bold text-white">{(rf.precision * 100).toFixed(2)}%</span>
+          </div>
+          <div className="px-3 py-2 rounded-xl bg-[#0D1322] border border-[#1E293B]">
+            <span className="text-[10px] text-slate-400 uppercase block">Recall</span>
+            <span className="text-base font-bold text-white">{(rf.recall * 100).toFixed(2)}%</span>
+          </div>
+          <div className="px-3 py-2 rounded-xl bg-[#0D1322] border border-[#1E293B]">
+            <span className="text-[10px] text-slate-400 uppercase block">F1 Score</span>
+            <span className="text-base font-bold text-white">{(rf.f1_score * 100).toFixed(2)}%</span>
+          </div>
+          <div className="px-3 py-2 rounded-xl bg-[#0D1322] border border-[#1E293B]">
+            <span className="text-[10px] text-slate-400 uppercase block">ROC-AUC</span>
+            <span className="text-base font-bold text-sky-400">{rf.roc_auc.toFixed(4)}</span>
           </div>
         </div>
       </div>
@@ -140,28 +88,28 @@ export default function ClassificationPage({ metrics }) {
         <ConfusionMatrix matrix={metrics?.confusion_matrix} />
 
         {/* ROC / PR Curve Chart */}
-        <div className="soc-card p-6 border border-slate-800">
-          <div className="flex items-center justify-between pb-3 border-b border-slate-800 mb-4">
+        <div className="soc-card p-6 border border-[#1E293B]">
+          <div className="flex items-center justify-between pb-3 border-b border-[#1E293B] mb-4">
             <div>
               <h4 className="text-base font-bold text-white flex items-center space-x-2">
-                <TrendingUp className="w-5 h-5 text-cyan-400" />
+                <TrendingUp className="w-5 h-5 text-sky-400" />
                 <span>Model Diagnostic Curves</span>
               </h4>
               <p className="text-xs text-slate-400">
-                Evaluation across all probability decision thresholds.
+                Evaluation across all probability decision thresholds
               </p>
             </div>
 
-            <div className="flex rounded-lg bg-slate-900 border border-slate-800 p-0.5 text-xs font-mono">
+            <div className="flex rounded-lg bg-[#0D1322] border border-[#1E293B] p-0.5 text-xs font-mono">
               <button
                 onClick={() => setActiveCurveTab("roc")}
-                className={`px-3 py-1 rounded transition-all ${activeCurveTab === "roc" ? "bg-cyan-600 text-white font-bold" : "text-slate-400 hover:text-white"}`}
+                className={`px-3 py-1 rounded transition-all ${activeCurveTab === "roc" ? "bg-sky-600 text-white font-bold" : "text-slate-400 hover:text-white"}`}
               >
                 ROC (AUC: {rf.roc_auc.toFixed(4)})
               </button>
               <button
                 onClick={() => setActiveCurveTab("pr")}
-                className={`px-3 py-1 rounded transition-all ${activeCurveTab === "pr" ? "bg-cyan-600 text-white font-bold" : "text-slate-400 hover:text-white"}`}
+                className={`px-3 py-1 rounded transition-all ${activeCurveTab === "pr" ? "bg-sky-600 text-white font-bold" : "text-slate-400 hover:text-white"}`}
               >
                 Precision-Recall
               </button>
@@ -190,7 +138,7 @@ export default function ClassificationPage({ metrics }) {
                     formatter={(val, name) => [val, name === "tpr" ? "True Positive Rate" : "FPR"]}
                     contentStyle={{ backgroundColor: "#0F172A", borderColor: "#334155", borderRadius: "8px", fontSize: "12px", fontFamily: "monospace" }}
                   />
-                  <Line type="monotone" dataKey="tpr" stroke="#06B6D4" strokeWidth={2.5} dot={false} name="ROC" />
+                  <Line type="monotone" dataKey="tpr" stroke="#38BDF8" strokeWidth={2.5} dot={false} name="ROC" />
                 </LineChart>
               ) : (
                 <LineChart data={prData} margin={{ top: 10, right: 20, bottom: 20, left: 10 }}>
@@ -221,18 +169,18 @@ export default function ClassificationPage({ metrics }) {
       </div>
 
       {/* Top Feature Importance Bar Chart */}
-      <div className="soc-card p-6 border border-slate-800">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-800 mb-4">
+      <div className="soc-card p-6 border border-[#1E293B]">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-[#1E293B] mb-4">
           <div>
             <h4 className="text-base font-bold text-white flex items-center space-x-2">
               <BarChart2 className="w-5 h-5 text-indigo-400" />
               <span>Gini Feature Importance Ranking (Top 10 Features)</span>
             </h4>
             <p className="text-xs text-slate-400">
-              Mean decrease in tree node impurity across all 100 Random Forest estimators.
+              Mean decrease in tree node impurity across all 100 Random Forest estimators
             </p>
           </div>
-          <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-indigo-950 text-indigo-300 border border-indigo-800">
+          <span className="text-[10px] font-mono px-2.5 py-1 rounded-full bg-slate-800 text-indigo-300 border border-slate-700">
             Derived from 120k Train Flows
           </span>
         </div>
@@ -246,9 +194,9 @@ export default function ClassificationPage({ metrics }) {
                 formatter={(val) => [val.toFixed(4), "Importance"]}
                 contentStyle={{ backgroundColor: "#0F172A", borderColor: "#334155", borderRadius: "8px", fontSize: "12px", fontFamily: "monospace" }}
               />
-              <Bar dataKey="importance" fill="#8B5CF6" radius={[0, 4, 4, 0]}>
+              <Bar dataKey="importance" fill="#6366F1" radius={[0, 4, 4, 0]}>
                 {topFeatures.slice(0, 10).map((_, index) => (
-                  <Cell key={`feat-${index}`} fill={index === 0 ? "#06B6D4" : index < 3 ? "#3B82F6" : "#8B5CF6"} />
+                  <Cell key={`feat-${index}`} fill={index === 0 ? "#38BDF8" : index < 3 ? "#6366F1" : "#A855F7"} />
                 ))}
               </Bar>
             </BarChart>

@@ -88,40 +88,38 @@ export default function DatasetExplorer() {
 
   return (
     <div className="space-y-6 animate-fadeIn">
-      {/* Header Banner */}
-      <div className="rounded-2xl p-6 sm:p-8 bg-gradient-to-r from-slate-900 via-cyan-950/20 to-slate-900 border border-slate-800">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div>
-            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-950 border border-cyan-800 text-cyan-300 text-xs font-mono mb-2">
-              <Database className="w-3.5 h-3.5" />
-              <span>SERVER-SIDE PAGINATION ENGINE</span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
-              Network Traffic Dataset Explorer
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-300 mt-1">
-              Browsing 150,000 synthetic network telemetry flows with live filtering and deep flow inspection.
-            </p>
+      {/* Header Banner (Concept 3 Style) */}
+      <div className="rounded-2xl p-6 sm:p-7 bg-[#111827] border border-[#1E293B] flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <div className="inline-flex items-center space-x-2 px-2.5 py-1 rounded-full bg-sky-500/10 border border-sky-500/30 text-sky-400 text-xs font-mono mb-2">
+            <Database className="w-3.5 h-3.5" />
+            <span>SERVER-SIDE TELEMETRY ENGINE</span>
           </div>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
+            Dataset Explorer
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl">
+            Live query and inspection across 150,000 synthetic network sessions with real-time server-side pagination and filtering.
+          </p>
+        </div>
 
-          <div className="text-right">
-            <span className="text-xs text-slate-400 font-mono block">Matching Records</span>
-            <span className="text-2xl font-black font-mono text-cyan-400">
-              {totalRecords.toLocaleString()}
-            </span>
-          </div>
+        <div className="px-4 py-2.5 rounded-xl bg-[#0D1322] border border-[#1E293B] font-mono text-right">
+          <span className="text-[10px] text-slate-400 uppercase tracking-wider block">Matching Flows</span>
+          <span className="text-xl font-bold text-sky-400">
+            {totalRecords.toLocaleString()}
+          </span>
         </div>
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="soc-card p-4 border border-slate-800 flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
+      <div className="soc-card p-4 border border-[#1E293B] flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
         <form onSubmit={handleSearchSubmit} className="flex-1 min-w-[240px] relative">
           <input
             type="text"
             placeholder="Search Flow ID, Source IP, Dest IP..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full bg-slate-900 border border-slate-700 rounded-lg pl-9 pr-4 py-2 text-xs text-white placeholder-slate-500 focus:border-cyan-500 focus:outline-none"
+            className="w-full bg-[#0D1322] border border-[#1E293B] rounded-lg pl-9 pr-4 py-2 text-xs text-white placeholder-slate-500 focus:border-sky-500 focus:outline-none"
           />
           <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
         </form>
@@ -133,7 +131,7 @@ export default function DatasetExplorer() {
             <select
               value={attackTypeFilter}
               onChange={(e) => { setAttackTypeFilter(e.target.value); setPage(1); }}
-              className="bg-slate-900 border border-slate-700 text-xs text-slate-200 rounded-lg px-2.5 py-2 focus:outline-none"
+              className="bg-[#0D1322] border border-[#1E293B] text-xs text-slate-200 rounded-lg px-2.5 py-2 focus:outline-none"
             >
               {ATTACK_TYPES.map(t => (
                 <option key={t} value={t}>{t}</option>
@@ -147,7 +145,7 @@ export default function DatasetExplorer() {
             <select
               value={isAttackFilter}
               onChange={(e) => { setIsAttackFilter(e.target.value); setPage(1); }}
-              className="bg-slate-900 border border-slate-700 text-xs text-slate-200 rounded-lg px-2.5 py-2 focus:outline-none"
+              className="bg-[#0D1322] border border-[#1E293B] text-xs text-slate-200 rounded-lg px-2.5 py-2 focus:outline-none"
             >
               <option value="">All (0 & 1)</option>
               <option value="0">0: Normal Only</option>
@@ -161,7 +159,7 @@ export default function DatasetExplorer() {
             <select
               value={limit}
               onChange={(e) => { setLimit(parseInt(e.target.value)); setPage(1); }}
-              className="bg-slate-900 border border-slate-700 text-xs text-slate-200 rounded-lg px-2.5 py-2 focus:outline-none"
+              className="bg-[#0D1322] border border-[#1E293B] text-xs text-slate-200 rounded-lg px-2.5 py-2 focus:outline-none"
             >
               <option value="10">10</option>
               <option value="25">25</option>
@@ -173,7 +171,7 @@ export default function DatasetExplorer() {
       </div>
 
       {/* Dataset Table */}
-      <div className="soc-card border border-slate-800 overflow-hidden relative">
+      <div className="soc-card border border-[#1E293B] overflow-hidden relative">
         {loading && (
           <div className="absolute inset-0 bg-slate-950/60 backdrop-blur-xs flex items-center justify-center z-10 font-mono text-cyan-400 text-xs">
             Querying telemetry database...
