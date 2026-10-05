@@ -1,0 +1,701 @@
+{
+  "dataset_summary": {
+    "total_samples": 150000,
+    "train_samples": 120000,
+    "test_samples": 30000,
+    "features_count": 37,
+    "attack_rate_overall": 0.46
+  },
+  "primary_model": {
+    "model_name": "Random Forest Classifier",
+    "accuracy": 0.9677,
+    "precision": 0.9619,
+    "recall": 0.968,
+    "f1_score": 0.965,
+    "roc_auc": 0.9635,
+    "training_time_sec": 9.97
+  },
+  "baseline_model": {
+    "model_name": "Logistic Regression (Baseline)",
+    "accuracy": 0.9627,
+    "precision": 0.962,
+    "recall": 0.9567,
+    "f1_score": 0.9593,
+    "roc_auc": 0.9685,
+    "training_time_sec": 1.38
+  },
+  "confusion_matrix": {
+    "true_negative": 15671,
+    "false_positive": 529,
+    "false_negative": 441,
+    "true_positive": 13359
+  },
+  "roc_curve": [
+    {
+      "fpr": 0.0,
+      "tpr": 0.0
+    },
+    {
+      "fpr": 0.0012,
+      "tpr": 0.019
+    },
+    {
+      "fpr": 0.0025,
+      "tpr": 0.0434
+    },
+    {
+      "fpr": 0.0039,
+      "tpr": 0.061
+    },
+    {
+      "fpr": 0.0051,
+      "tpr": 0.0831
+    },
+    {
+      "fpr": 0.0063,
+      "tpr": 0.101
+    },
+    {
+      "fpr": 0.0075,
+      "tpr": 0.1317
+    },
+    {
+      "fpr": 0.0086,
+      "tpr": 0.1609
+    },
+    {
+      "fpr": 0.0099,
+      "tpr": 0.191
+    },
+    {
+      "fpr": 0.0111,
+      "tpr": 0.2257
+    },
+    {
+      "fpr": 0.0123,
+      "tpr": 0.2493
+    },
+    {
+      "fpr": 0.0135,
+      "tpr": 0.2767
+    },
+    {
+      "fpr": 0.0147,
+      "tpr": 0.2979
+    },
+    {
+      "fpr": 0.0159,
+      "tpr": 0.3517
+    },
+    {
+      "fpr": 0.0172,
+      "tpr": 0.3738
+    },
+    {
+      "fpr": 0.0185,
+      "tpr": 0.4007
+    },
+    {
+      "fpr": 0.0198,
+      "tpr": 0.4412
+    },
+    {
+      "fpr": 0.0209,
+      "tpr": 0.4746
+    },
+    {
+      "fpr": 0.0223,
+      "tpr": 0.508
+    },
+    {
+      "fpr": 0.0235,
+      "tpr": 0.5637
+    },
+    {
+      "fpr": 0.0248,
+      "tpr": 0.6149
+    },
+    {
+      "fpr": 0.026,
+      "tpr": 0.6625
+    },
+    {
+      "fpr": 0.0272,
+      "tpr": 0.7321
+    },
+    {
+      "fpr": 0.0285,
+      "tpr": 0.7828
+    },
+    {
+      "fpr": 0.0297,
+      "tpr": 0.8414
+    },
+    {
+      "fpr": 0.0309,
+      "tpr": 0.8681
+    },
+    {
+      "fpr": 0.0322,
+      "tpr": 0.9314
+    },
+    {
+      "fpr": 0.0793,
+      "tpr": 0.9688
+    },
+    {
+      "fpr": 0.1417,
+      "tpr": 0.9703
+    },
+    {
+      "fpr": 0.1817,
+      "tpr": 0.9717
+    },
+    {
+      "fpr": 0.2138,
+      "tpr": 0.973
+    },
+    {
+      "fpr": 0.2697,
+      "tpr": 0.9746
+    },
+    {
+      "fpr": 0.3022,
+      "tpr": 0.976
+    },
+    {
+      "fpr": 0.3647,
+      "tpr": 0.9774
+    },
+    {
+      "fpr": 0.4012,
+      "tpr": 0.9788
+    },
+    {
+      "fpr": 0.4402,
+      "tpr": 0.9802
+    },
+    {
+      "fpr": 0.4852,
+      "tpr": 0.9816
+    },
+    {
+      "fpr": 0.5178,
+      "tpr": 0.983
+    },
+    {
+      "fpr": 0.5577,
+      "tpr": 0.9843
+    },
+    {
+      "fpr": 0.6107,
+      "tpr": 0.9857
+    },
+    {
+      "fpr": 0.6546,
+      "tpr": 0.9871
+    },
+    {
+      "fpr": 0.6926,
+      "tpr": 0.9886
+    },
+    {
+      "fpr": 0.7391,
+      "tpr": 0.99
+    },
+    {
+      "fpr": 0.7821,
+      "tpr": 0.9914
+    },
+    {
+      "fpr": 0.818,
+      "tpr": 0.9928
+    },
+    {
+      "fpr": 0.8456,
+      "tpr": 0.9943
+    },
+    {
+      "fpr": 0.8951,
+      "tpr": 0.9957
+    },
+    {
+      "fpr": 0.934,
+      "tpr": 0.997
+    },
+    {
+      "fpr": 0.9654,
+      "tpr": 0.9986
+    },
+    {
+      "fpr": 1.0,
+      "tpr": 1.0
+    }
+  ],
+  "pr_curve": [
+    {
+      "recall": 1.0,
+      "precision": 0.46
+    },
+    {
+      "recall": 0.9985,
+      "precision": 0.4689
+    },
+    {
+      "recall": 0.9968,
+      "precision": 0.4781
+    },
+    {
+      "recall": 0.9954,
+      "precision": 0.4878
+    },
+    {
+      "recall": 0.9945,
+      "precision": 0.4981
+    },
+    {
+      "recall": 0.9928,
+      "precision": 0.5085
+    },
+    {
+      "recall": 0.9913,
+      "precision": 0.5195
+    },
+    {
+      "recall": 0.9903,
+      "precision": 0.5313
+    },
+    {
+      "recall": 0.989,
+      "precision": 0.5435
+    },
+    {
+      "recall": 0.9876,
+      "precision": 0.5563
+    },
+    {
+      "recall": 0.9864,
+      "precision": 0.5698
+    },
+    {
+      "recall": 0.9852,
+      "precision": 0.5841
+    },
+    {
+      "recall": 0.9846,
+      "precision": 0.5995
+    },
+    {
+      "recall": 0.9832,
+      "precision": 0.6152
+    },
+    {
+      "recall": 0.9817,
+      "precision": 0.6318
+    },
+    {
+      "recall": 0.9807,
+      "precision": 0.6496
+    },
+    {
+      "recall": 0.9792,
+      "precision": 0.6682
+    },
+    {
+      "recall": 0.9778,
+      "precision": 0.6882
+    },
+    {
+      "recall": 0.9769,
+      "precision": 0.7096
+    },
+    {
+      "recall": 0.976,
+      "precision": 0.7325
+    },
+    {
+      "recall": 0.9745,
+      "precision": 0.7566
+    },
+    {
+      "recall": 0.9737,
+      "precision": 0.7829
+    },
+    {
+      "recall": 0.9723,
+      "precision": 0.8107
+    },
+    {
+      "recall": 0.9708,
+      "precision": 0.8406
+    },
+    {
+      "recall": 0.9695,
+      "precision": 0.8732
+    },
+    {
+      "recall": 0.9688,
+      "precision": 0.909
+    },
+    {
+      "recall": 0.9683,
+      "precision": 0.948
+    },
+    {
+      "recall": 0.9391,
+      "precision": 0.9613
+    },
+    {
+      "recall": 0.8959,
+      "precision": 0.9607
+    },
+    {
+      "recall": 0.8528,
+      "precision": 0.9602
+    },
+    {
+      "recall": 0.8098,
+      "precision": 0.9597
+    },
+    {
+      "recall": 0.7663,
+      "precision": 0.9587
+    },
+    {
+      "recall": 0.7229,
+      "precision": 0.9578
+    },
+    {
+      "recall": 0.6797,
+      "precision": 0.9568
+    },
+    {
+      "recall": 0.6364,
+      "precision": 0.9553
+    },
+    {
+      "recall": 0.5933,
+      "precision": 0.9542
+    },
+    {
+      "recall": 0.5502,
+      "precision": 0.9528
+    },
+    {
+      "recall": 0.5071,
+      "precision": 0.9509
+    },
+    {
+      "recall": 0.4645,
+      "precision": 0.9509
+    },
+    {
+      "recall": 0.4216,
+      "precision": 0.9497
+    },
+    {
+      "recall": 0.3792,
+      "precision": 0.9492
+    },
+    {
+      "recall": 0.3369,
+      "precision": 0.9484
+    },
+    {
+      "recall": 0.2941,
+      "precision": 0.9459
+    },
+    {
+      "recall": 0.2519,
+      "precision": 0.9448
+    },
+    {
+      "recall": 0.2094,
+      "precision": 0.9435
+    },
+    {
+      "recall": 0.1672,
+      "precision": 0.9412
+    },
+    {
+      "recall": 0.1247,
+      "precision": 0.9363
+    },
+    {
+      "recall": 0.0829,
+      "precision": 0.9339
+    },
+    {
+      "recall": 0.0417,
+      "precision": 0.9365
+    },
+    {
+      "recall": 0.0,
+      "precision": 1.0
+    }
+  ],
+  "top_features": [
+    {
+      "feature": "failed_connections",
+      "importance": 0.19154,
+      "rank": 1
+    },
+    {
+      "feature": "connection_count",
+      "importance": 0.15089,
+      "rank": 2
+    },
+    {
+      "feature": "rst_count",
+      "importance": 0.09517,
+      "rank": 3
+    },
+    {
+      "feature": "syn_count",
+      "importance": 0.07925,
+      "rank": 4
+    },
+    {
+      "feature": "retransmission_count",
+      "importance": 0.07135,
+      "rank": 5
+    },
+    {
+      "feature": "tcp_flag_count",
+      "importance": 0.0532,
+      "rank": 6
+    },
+    {
+      "feature": "data_exfiltration_score",
+      "importance": 0.04487,
+      "rank": 7
+    },
+    {
+      "feature": "packet_count",
+      "importance": 0.04178,
+      "rank": 8
+    },
+    {
+      "feature": "http_requests",
+      "importance": 0.03751,
+      "rank": 9
+    },
+    {
+      "feature": "avg_packet_size",
+      "importance": 0.03339,
+      "rank": 10
+    },
+    {
+      "feature": "ack_count",
+      "importance": 0.02438,
+      "rank": 11
+    },
+    {
+      "feature": "payload_size",
+      "importance": 0.0187,
+      "rank": 12
+    },
+    {
+      "feature": "forward_packets",
+      "importance": 0.01866,
+      "rank": 13
+    },
+    {
+      "feature": "backward_packets",
+      "importance": 0.01862,
+      "rank": 14
+    },
+    {
+      "feature": "backward_bytes",
+      "importance": 0.01681,
+      "rank": 15
+    }
+  ],
+  "all_features": [
+    {
+      "feature": "failed_connections",
+      "importance": 0.19154,
+      "rank": 1
+    },
+    {
+      "feature": "connection_count",
+      "importance": 0.15089,
+      "rank": 2
+    },
+    {
+      "feature": "rst_count",
+      "importance": 0.09517,
+      "rank": 3
+    },
+    {
+      "feature": "syn_count",
+      "importance": 0.07925,
+      "rank": 4
+    },
+    {
+      "feature": "retransmission_count",
+      "importance": 0.07135,
+      "rank": 5
+    },
+    {
+      "feature": "tcp_flag_count",
+      "importance": 0.0532,
+      "rank": 6
+    },
+    {
+      "feature": "data_exfiltration_score",
+      "importance": 0.04487,
+      "rank": 7
+    },
+    {
+      "feature": "packet_count",
+      "importance": 0.04178,
+      "rank": 8
+    },
+    {
+      "feature": "http_requests",
+      "importance": 0.03751,
+      "rank": 9
+    },
+    {
+      "feature": "avg_packet_size",
+      "importance": 0.03339,
+      "rank": 10
+    },
+    {
+      "feature": "ack_count",
+      "importance": 0.02438,
+      "rank": 11
+    },
+    {
+      "feature": "payload_size",
+      "importance": 0.0187,
+      "rank": 12
+    },
+    {
+      "feature": "forward_packets",
+      "importance": 0.01866,
+      "rank": 13
+    },
+    {
+      "feature": "backward_packets",
+      "importance": 0.01862,
+      "rank": 14
+    },
+    {
+      "feature": "backward_bytes",
+      "importance": 0.01681,
+      "rank": 15
+    },
+    {
+      "feature": "login_attempts",
+      "importance": 0.01597,
+      "rank": 16
+    },
+    {
+      "feature": "forward_bytes",
+      "importance": 0.01341,
+      "rank": 17
+    },
+    {
+      "feature": "byte_count",
+      "importance": 0.01202,
+      "rank": 18
+    },
+    {
+      "feature": "max_packet_size",
+      "importance": 0.0106,
+      "rank": 19
+    },
+    {
+      "feature": "failed_login_attempts",
+      "importance": 0.01018,
+      "rank": 20
+    },
+    {
+      "feature": "unique_destination_ports",
+      "importance": 0.00838,
+      "rank": 21
+    },
+    {
+      "feature": "jitter",
+      "importance": 0.00538,
+      "rank": 22
+    },
+    {
+      "feature": "min_packet_size",
+      "importance": 0.005,
+      "rank": 23
+    },
+    {
+      "feature": "inter_arrival_time",
+      "importance": 0.0039,
+      "rank": 24
+    },
+    {
+      "feature": "byte_rate",
+      "importance": 0.00385,
+      "rank": 25
+    },
+    {
+      "feature": "tls_connections",
+      "importance": 0.00314,
+      "rank": 26
+    },
+    {
+      "feature": "destination_port",
+      "importance": 0.00232,
+      "rank": 27
+    },
+    {
+      "feature": "active_time",
+      "importance": 0.00188,
+      "rank": 28
+    },
+    {
+      "feature": "packet_rate",
+      "importance": 0.00122,
+      "rank": 29
+    },
+    {
+      "feature": "flow_duration",
+      "importance": 0.00115,
+      "rank": 30
+    },
+    {
+      "feature": "dns_requests",
+      "importance": 0.00111,
+      "rank": 31
+    },
+    {
+      "feature": "source_entropy",
+      "importance": 0.00105,
+      "rank": 32
+    },
+    {
+      "feature": "destination_entropy",
+      "importance": 0.00104,
+      "rank": 33
+    },
+    {
+      "feature": "idle_time",
+      "importance": 0.00099,
+      "rank": 34
+    },
+    {
+      "feature": "hour",
+      "importance": 0.00064,
+      "rank": 35
+    },
+    {
+      "feature": "day_of_week",
+      "importance": 0.00037,
+      "rank": 36
+    },
+    {
+      "feature": "fin_count",
+      "importance": 0.00028,
+      "rank": 37
+    }
+  ]
+}
