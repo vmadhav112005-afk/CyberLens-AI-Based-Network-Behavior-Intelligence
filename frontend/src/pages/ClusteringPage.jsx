@@ -230,7 +230,10 @@ export default function ClusteringPage({ clusteringData, pcaData }) {
       </div>
 
       {/* 2D PCA Latent Space Scatter Plot */}
-      <PcaScatterPlot pcaPoints={pcaData?.points} centroids={pcaData?.centroids} />
+      <PcaScatterPlot 
+        points={pcaData?.points} 
+        varianceExplained={pcaData?.variance_explained} 
+      />
 
       {/* Interactive Behavioral Sandbox */}
       <BehaviorExplorer />
